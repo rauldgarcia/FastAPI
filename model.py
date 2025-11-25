@@ -5,9 +5,17 @@ class Todo(BaseModel):
     item: str
 
     class Config:
-        Schema_extra ={
+        Schema_extra = {
             "Example": {
                 "id": 1,
                 "item": "Example schema"
             }
+        }
+
+class TodoItem(BaseModel):
+    item: str
+
+    class Config:
+        schema_extra = {
+            "example": {"item": "Read the next chapter"}
         }
