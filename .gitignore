@@ -1,3 +1,6 @@
 /venv
 /__pycache__
 /todo/__pycache__
+/planner/__pycache__
+/planner/models/__pycache__
+/planner/routes/__pycache__
