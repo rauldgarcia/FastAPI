@@ -12,9 +12,10 @@ class Event(BaseModel):
     class Config:
         json_schema_extra = {
             "example": {
+                "id": 0,
                 "title": "FastAPI Book Launch",
                 "image": "https://linktomyimage.com/image.png",
-                "description": "We eill be discussin the contents of the FastAPI book in this event.",
+                "description": "We will be discussin the contents of the FastAPI book in this event.",
                 "tags": ["python", "fastapi", "book", "launch"],
                 "location": "Google Meet"
             }
