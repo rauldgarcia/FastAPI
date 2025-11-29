@@ -2,9 +2,16 @@ from fastapi import FastAPI
 from routes.users import user_router
 from routes.events import event_router
 import uvicorn
+from database.connection import Settings
+from contextlib import asynccontextmanager
 
-app = FastAPI()
+settings = Settings()
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    await settings.initialize_database()
+    yield
 
+app = FastAPI(lifespan=lifespan)
 app.include_router(user_router, prefix="/user")
 app.include_router(event_router, prefix="/event")
 
