@@ -3,7 +3,7 @@ from typing import Optional, List
 from beanie import Document
 
 class Event(Document):
-    #id: int
+    creator: Optional[str]
     title: str
     image: str
     description: str
