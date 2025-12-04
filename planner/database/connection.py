@@ -1,7 +1,7 @@
 from beanie import init_beanie, PydanticObjectId
 from motor.motor_asyncio import AsyncIOMotorClient
 from typing import Optional, Any, List
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 from pydantic_settings import BaseSettings
 from models.users import User
 from models.events import Event
@@ -17,8 +17,9 @@ class Settings(BaseSettings):
             document_models=[Event, User]
         )
 
-    class Config:
+    model_config = ConfigDict(
         env_file = ".env"
+    )
 
 class Database:
     def __init__(self, model):

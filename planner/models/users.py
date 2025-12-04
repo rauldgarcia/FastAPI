@@ -1,4 +1,4 @@
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel, EmailStr, ConfigDict
 from typing import Optional, List
 from models.events import Event
 from beanie import Document, Link
@@ -11,7 +11,7 @@ class User(Document):
     class Settings:
         name = "users"
 
-    class Config:
+    model_config = ConfigDict(
         json_schema_extra = {
             "example": {
                 "email": "fastapi@packt.com",
@@ -19,6 +19,7 @@ class User(Document):
                 "events": [],
             }
         }
+    )
 
 class TokenResponse(BaseModel):
     access_token: str

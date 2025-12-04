@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 from typing import Optional, List
 from beanie import Document
 
@@ -10,7 +10,7 @@ class Event(Document):
     tags: List[str]
     location: str
 
-    class Config:
+    model_config = ConfigDict(
         json_schema_extra = {
             "example": {
                 #"id": 0,
@@ -21,6 +21,7 @@ class Event(Document):
                 "location": "Google Meet"
             }
         }
+    )
 
     class Settings:
         name = "events"
@@ -34,7 +35,7 @@ class EventUpdate(BaseModel):
     tags: Optional[List[str]]
     location: Optional[str]
 
-    class Config:
+    model_config = ConfigDict(
         json_schema_extra = {
             "example": {
                 "id": 0,
@@ -45,3 +46,4 @@ class EventUpdate(BaseModel):
                 "location": "Google Meet"
             }
         }
+    )
