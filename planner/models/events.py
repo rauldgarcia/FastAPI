@@ -13,7 +13,6 @@ class Event(Document):
     model_config = ConfigDict(
         json_schema_extra = {
             "example": {
-                #"id": 0,
                 "title": "FastAPI Book Launch",
                 "image": "https://linktomyimage.com/image.png",
                 "description": "We will be discussin the contents of the FastAPI book in this event.",
@@ -28,12 +27,11 @@ class Event(Document):
 
 
 class EventUpdate(BaseModel):
-    id: Optional[int]
-    title: Optional[str]
-    image: Optional[str]
-    description: Optional[str]
-    tags: Optional[List[str]]
-    location: Optional[str]
+    title: Optional[str] = None
+    image: Optional[str] = None
+    description: Optional[str] = None
+    tags: Optional[List[str]] = None
+    location: Optional[str] = None
 
     model_config = ConfigDict(
         json_schema_extra = {
